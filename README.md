@@ -20,9 +20,9 @@ E então executar:
     yarn prisma studio
 ````
 
-Com isso será aberta a interface web que o prisma disponibiliza para visualização do banco de dados
+> Com isso será aberta a interface web que o prisma disponibiliza para visualização do banco de dados
 
-Algumas regras definidas:
+Algumas regras definidas:  
 +Dados só podem ser inseridos com supervisão de pesuisador, pois deve ser possível rastrear quem autorizou a inserção dos dados
 
 +As temperaturas sempre serão em °C
