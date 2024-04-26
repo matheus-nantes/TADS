@@ -1,3 +1,4 @@
+import { AppError } from "../../../../errors/AppError";
 import { prisma } from "../../../../prisma/client";
 import { CreatePesquisadorDTO } from "../../dtos/CreatePesquisadorDTO";
 
@@ -10,7 +11,7 @@ export class CreatePesquisadorUseCase {
         });
 
         if( pesquisadorAlreadyExists){
-            
+            throw new AppError("Pesquisador already exists!");
         }
 
         const pesquisador = await prisma.pesquisador.create({

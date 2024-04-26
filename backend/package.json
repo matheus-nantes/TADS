@@ -6,10 +6,11 @@
     "typescript": "^5.4.5"
   },
   "scripts": {
-    "dev" : "ts-node-dev --exit-child --transpile-only --ignore-watch node_module src/server.ts"
+    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_module src/server.ts"
   },
   "dependencies": {
     "@prisma/client": "^5.13.0",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1"
   }
 }

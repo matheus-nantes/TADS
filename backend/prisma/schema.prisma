@@ -45,8 +45,13 @@ model CondicaoClimatica{
   nuvens Float
   nascerDoSol DateTime
   porDoSol DateTime
+  dataDeColeta DateTime
+  created_At DateTime @default(now())
+  updated_at DateTime @updatedAt
 
   pesquisador Pesquisador @relation("inserirDados", fields: [cpfPesquisador], references: [cpf])
   cpfPesquisador String
+
+  @@map("condicoesClimatica")
 }
 
