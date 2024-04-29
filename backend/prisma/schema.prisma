@@ -24,7 +24,17 @@ model Pesquisador{
 
   inserir_Dados CondicaoClimatica[] @relation("inserirDados")
 
-  @@map("users")
+  @@map("Pesquisador")
+}
+
+model Localizacao{
+  latitude Float
+  longitude Float
+  nome String 
+
+  referenciar_local CondicaoClimatica[] @relation("referenciarLocalizacao")
+  @@id([latitude, longitude])
+  @@map("Localizacao")
 }
 
 model CondicaoClimatica{
@@ -52,6 +62,9 @@ model CondicaoClimatica{
   pesquisador Pesquisador @relation("inserirDados", fields: [cpfPesquisador], references: [cpf])
   cpfPesquisador String
 
-  @@map("condicoesClimatica")
+
+  localizacao Localizacao @relation("referenciarLocalizacao", fields: [latitude, longitude], references: [latitude,longitude])
+  
+  @@map("CondicaoClimatica")
 }
 
