@@ -7,7 +7,7 @@
 
  Para executar o sistema corretamente, primeiramente voce deve fazer o download das dependências do projeto com:
 ````c
-yarn add
+    yarn add
 ````
 
 Com isso, o sistema conseguirá ser executado corretamente.
