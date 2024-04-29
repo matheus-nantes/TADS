@@ -27,8 +27,8 @@ Para executar o servidor backend basta rodar:
     yarn dev
 ````
 
-Com isso o servidor passará a ser executado no endereço "localhost:3333", e tem os seguinte endpoit:
-<br>**Esta documentação rudimentar dos endpoints será aprimorada furutamente por meio de frameworks, é que no momento esta atividade possui média prioridade**
+Com isso o servidor passará a ser executado no endereço "localhost:3333", e tem os seguinte endpoit:  
+*Esta documentação rudimentar dos endpoints será aprimorada furutamente por meio de frameworks, é que no momento esta atividade possui média prioridade*
 
 +"/pesquisador": onde é possível executar post, para criar um pesquisador, e get para obter todos os pesquisadores cadastrados. A princípio não foi incluído o parâmetro "senha" pois requer criptografia e outros indicadores de segurança, e como atualmente esta funcionalidade possui baixa prioridade, não foi incluída nesta entrega
 
