@@ -28,7 +28,7 @@ Para executar o servidor backend basta rodar:
 ````
 
 Com isso o servidor passará a ser executado no endereço "localhost:3333", e tem os seguinte endpoit:
-**Esta documentação rudimentar dos endpoints será aprimorada furutamente por meio de frameworks, é que no momento esta atividade possui média prioridade**
+<br>**Esta documentação rudimentar dos endpoints será aprimorada furutamente por meio de frameworks, é que no momento esta atividade possui média prioridade**
 
 +"/pesquisador": onde é possível executar post, para criar um pesquisador, e get para obter todos os pesquisadores cadastrados. A princípio não foi incluído o parâmetro "senha" pois requer criptografia e outros indicadores de segurança, e como atualmente esta funcionalidade possui baixa prioridade, não foi incluída nesta entrega
 
@@ -39,7 +39,7 @@ Com isso o servidor passará a ser executado no endereço "localhost:3333", e te
 
  Algumas regras definidas:  
   
-+Dados só podem ser inseridos com supervisão de pesuisador, pois deve ser possível rastrear quem autorizou a inserção dos dados
++Dados só podem ser inseridos com supervisão de pesquisador, pois deve ser possível rastrear quem autorizou a inserção dos dados
 
 +As temperaturas sempre serão em °C
 
