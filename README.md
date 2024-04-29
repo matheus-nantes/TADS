@@ -3,6 +3,8 @@
 
  Para o banco de dados será utilizado o ORM Prisma.js
 
+ O código responsável por executar a requisição para a API OpenWeatherMap e salvar tais dados no banco de dados é o nomeado **"periodic.py"**, onde foi implementado uma estrutura de repetição que realiza a requisição a cada 5 minutos.
+
  Para executar o sistema corretamente, primeiramente voce deve fazer o download das dependências do projeto com:
 ````c
 yarn add
