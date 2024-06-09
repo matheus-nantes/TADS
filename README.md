@@ -53,10 +53,12 @@ Este projeto foi desenvolvido como parte da disciplina de Técnicas Avançadas d
    git clone https://github.com/matheus-nantes/TADS.git
    cd backend
    ```
-- Não se esqueça de alterar o diretório no terminal para a pasta TADS/backend, pois é aonde o código da aplicação está.
-```bash
-cd TADS\backend
-```
+<div style="font-size: 0.8em;padding-left:50px;">
+ Não se esqueça de alterar o diretório no terminal para a pasta TADS/backend, pois é aonde o código da aplicação está.
+ <div style="font-size: 1.2em;margin-left:60px;background-color:#eeeeee">
+ cd TADS/backend
+ </div>
+</div>
 
 <br>
 
@@ -81,12 +83,12 @@ cd TADS\backend
 
 O projeto foi organizado conforme os princípios do Domain-Driven Design (DDD). Abaixo está o mapeamento dos elementos de DDD:
 
-### Domínios
+No meu projeto, cada ``entidade`` foi mapeada em um ``seviço`` diferente, com seus respectivos ``casos de uso`` mapeados, logo:
 
 1. **Condição Climática (`condicaoClimatica`)**
    - **Entidade:** `CondicaoClimatica`
-   - **Repositório:** `src/modules/condicaoClimatica/useCases`
-   - **DTOs:** `src/modules/condicaoClimatica/dtos/CreateCondicaoClimaticaDTO.ts`
+   - **Endpoint do serviço:** `localhost:3333/condicao`
+   - **DTO:** `src/modules/condicaoClimatica/dtos/CreateCondicaoClimaticaDTO.ts`
    - **Casos de Uso:**
      - `createCondicaoClimatica`
        - `CreateCondicaoClimaticaController.ts`
@@ -95,19 +97,10 @@ O projeto foi organizado conforme os princípios do Domain-Driven Design (DDD). 
        - `GetCondicaoClimaticaController.ts`
        - `GetCondicaoClimaticaUseCase.ts`
 
-2. **Localização (`localizacao`)**
-   - **Entidade:** `Localizacao`
-   - **Repositório:** `src/modules/localizacao/useCases`
-   - **DTOs:** `src/modules/localizacao/dtos/CreateLocalizacaoDTO.ts`
-   - **Casos de Uso:**
-     - `createLocalizacao`
-       - `CreateLocalizacaoController.ts`
-       - `CreateLocalizacaoUseCase.ts`
-
-3. **Pesquisador (`pesquisador`)**
+2. **Pesquisador (`pesquisador`)**
    - **Entidade:** `Pesquisador`
-   - **Repositório:** `src/modules/pesquisador/useCases`
-   - **DTOs:** `src/modules/pesquisador/dtos/CreatePesquisadorDTO.ts`
+   - **Endpoint do serviço:** `localhost:3333/pesquisador`
+   - **DTO:** `src/modules/pesquisador/dtos/CreatePesquisadorDTO.ts`
    - **Casos de Uso:**
      - `createPesquisador`
        - `CreatePesquisadorController.ts`
@@ -116,9 +109,16 @@ O projeto foi organizado conforme os princípios do Domain-Driven Design (DDD). 
        - `GetPesquisadorController.ts`
        - `GetPesquisadoresUseCase.ts`
 
+O **repositório** do meu sistema, definido no documento da atividade "Projeto de software usando DDD para coleta de dados climáticos" como "Base de dados climáticos", seria o próprio Prisma. O Prisma oferece uma abstração ao acesso e manipulação ao acesso aos dados, e age como uma camada entre a camada de negócios e a de dados, oferecendo métodos como pesquisador.create, pesquisador.findUnique, pesquisador.save, pesquisador.delete, etc. Ele abstrai a criação de queries e a manipulação direta do banco de dados através de funções e métodos pré-definidos. Além disso, mudar de uma base de dados relacional para não relacional exigirá apenas ajustes nos arquivos de configuração do Prisma, sem afetar as entidades ou serviços.
+> <div style="font-size: 0.8em;">Admito que fiquei com certa dúvida ao definir exatamente o repositório, pois pois os "UseCases" de cada entidade, ex: "src/modules/condicaoClimatica/createCaondicaoClimatica/CreateCondicaoClimaticaUseCase.ts", também podem ser considerados repositórios ao meu ver, pois realizam um processo de abstração entre camada de negócio e acesso ao dados, porém, ele realiza esse acesso aos dados por meio do prisma, que também pode ser considerado um repositório, então resolvi unificar essa definição apenas ao prisma, mas caso eu esteja equivocado, quero ressaltar que existem ambas possibilidades que estão sendo mapeadas em meu projeto.</div>
+
+
 ### Regras de Negócio
 
 As regras de negócio estão contidas nos casos de uso de cada módulo, seguindo o princípio de que a lógica deve ser encapsulada e gerida pelos próprios domínios.
+- Por exemplo, na versão atual do projeto, o cpf do pesquisador responsável pela "ordem" de coleta de dados já está incluído na entidade condicaoClimática, pois assim, já é possível implementar o sistema de login no sistema em novas sprint's. Pois assim, além de possibilitar a rastreabilidade das coletas, quem solicitou o quê, por exemplo, caso sejam adotadas requisições pagas futuramente, bem como será possível restringir o acesso aos dados, caso seja necessário.
+- O nome do local retornado pela OpenWeatherMap, junto com o país, separado por hífen, são inclusos na entidade coletaClimática para possibilidade de implementação de filtros mais restritos em versões futuras.
+
 
 ### Configuração do Prisma
 
@@ -129,14 +129,11 @@ A pasta `prisma` contém a configuração do Prisma e as migrações do banco de
 As rotas da API são definidas em `src/routes` e mapeiam os endpoints para os serviços e seus respectivos casos de uso.
 Para acessar a documentação dos serviços, acesse: [localhost:3333/api/docs](http://localhost:3333/api-docs)
 
-## Contribuição
+## Contato
 
-Contribuições são bem-vindas! Por favor, siga o fluxo padrão de GitHub para pull requests.
+Caso haja qualquer dúvida relacionada ao desenvolvimento do projeto ou organização e estruturação do mesmo, entre em contato comigo por meio dos seguintes canais:
 
-1. Fork o projeto.
-2. Crie uma nova branch (`git checkout -b feature/nova-feature`).
-3. Commit suas mudanças (`git commit -m 'Add nova feature'`).
-4. Push para a branch (`git push origin feature/nova-feature`).
-5. Abra um Pull Request.
++ Email: nantes.matheus@ufms.br
++ Whatsapp: 67 98472-3254
 
 
