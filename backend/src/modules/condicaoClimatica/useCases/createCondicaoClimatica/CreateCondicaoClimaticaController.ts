@@ -3,49 +3,12 @@ import { CreateCondicaoClimaticaUseCase } from "./CreateCondicaoClimaticaUseCase
 
 export class CreateCondicaoClimaticaController {
     async handle(req: Request, res: Response) {
-        const {latitude,
-            longitude,
-            tempo,
-            descricaoTempo,
-            temperatura,
-            sensacaoTermica,
-            temperaturaMaxima,
-            temperaturaMinima,
-            pressaoDoAr,
-            umidade,
-            visibilidade,
-            ventoVelocidade,
-            ventoDirecao,
-            nuvens,
-            nascerDoSol,
-            porDoSol,
-            dataDeColeta,
-            cpfPesquisador} = req.body;
 
-        const createCondicaoClimaticaUseCase = new CreateCondicaoClimaticaUseCase();
-
-       await createCondicaoClimaticaUseCase.execute({
-            latitude,
-            longitude,
-            tempo,
-            descricaoTempo,
-            temperatura,
-            sensacaoTermica,
-            temperaturaMaxima,
-            temperaturaMinima,
-            pressaoDoAr,
-            umidade,
-            visibilidade,
-            ventoVelocidade,
-            ventoDirecao,
-            nuvens,
-            nascerDoSol,
-            porDoSol,
-            dataDeColeta,
-            cpfPesquisador
-        });
-
+    const { latitude,longitude } = req.body;// futuramente, com implementação de login, também poderá ser passado o cpf do pesquisador para que tenha um registro e seja possível a rastreabilidade no sistema 
         
-        return res.status(201).send();
+    const createCondicaoClimaticaUseCase = new CreateCondicaoClimaticaUseCase();
+    const result = await createCondicaoClimaticaUseCase.execute({latitude,longitude});
+        
+        return res.status(201).send(result);
     }
 }

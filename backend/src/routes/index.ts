@@ -7,6 +7,5 @@ const routes = Router();
 
 routes.use("/pesquisador", pesquisadorRoutes);
 routes.use("/condicao", condicaoRoutes);
-routes.use("/localizacao", localizacaoRoutes);
 
 export { routes };
