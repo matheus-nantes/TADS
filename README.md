@@ -118,9 +118,10 @@ As regras de negócio estão contidas nos casos de uso de cada módulo, seguindo
 
 A pasta `prisma` contém a configuração do Prisma e as migrações do banco de dados. As migrações refletem a evolução do schema ao longo do desenvolvimento.
 
-## Rotas da API
+## Rotas da API E DOCUMENTAÇÃO
 
 As rotas da API são definidas em `src/routes` e mapeiam os endpoints para os serviços e seus respectivos casos de uso.
+Para acessar a documentação dos serviços, acesse: [localhost:3333/api/docs](http://localhost:3333/api-docs)
 
 ## Contribuição
 
