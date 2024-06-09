@@ -53,6 +53,12 @@ Este projeto foi desenvolvido como parte da disciplina de Técnicas Avançadas d
    git clone https://github.com/matheus-nantes/TADS.git
    cd backend
    ```
+- Não se esqueça de alterar o diretório no terminal para a pasta TADS/backend, pois é aonde o código da aplicação está.
+```bash
+cd TADS\backend
+```
+
+<br>
 
 2. **Instale as dependências:**
    ```bash
