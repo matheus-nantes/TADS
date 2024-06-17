@@ -1,0 +1,123 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Weather API",
+        "description": "API para coleta e listagem de dados climáticos"
+    },
+    "schemes": ["http"],
+    "paths": {
+        "/inscricao": {
+            "post": {
+                "tags": ["Inscricao"],
+                "summary": "Cadastrar uma nova inscricao",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Dados referente À nova inscricao",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "nome": {
+                                    "type": "string",
+                                    "example": "teste"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "teste@gmail.com"
+                                },
+                                "senha": {
+                                    "type": "string",
+                                    "example": "umasenhaqualquer"
+                                },
+                                "periodicidade": {
+                                "type": "string",
+                                "enum": ["semanal", "quinzenal", "mensal", "semestral"],
+                                "example": "mensal"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Inscricao Cadastrada Com Sucesso!"
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Inscricao"],
+                "summary": "Listar as inscrições cadastradas no banco de dados",
+                "responses": {
+                    "200": {
+                        "description": "Lista de dados coletados"
+                    }
+                }
+            }
+        },
+        "/inscricao/desativar": {
+            "put": {
+                "tags": ["Inscricao"],
+                "summary": "Desativar uma inscricao",
+                "parameters": [
+                    {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Dados para desativar uma inscrição",
+                      "required": true,
+                      "schema": {
+                      "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "example": "teste@gmail.com"
+                                }
+                            }
+                      }
+                    }
+                  ]
+                ,
+                "responses": {
+                    "201": {
+                        "description": "Inscricao Desativada Com Sucesso!"
+                    }
+                }
+            }
+        },
+        "/inscricao/login": {
+            "post": {
+                "tags": ["Inscricao"],
+                "summary": "Realizar login",
+                "parameters": [
+                    {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Validar se a senha e o email informados estão corretos",
+                      "required": true,
+                      "schema": {
+                       "type": "object",
+                            "properties": {
+                                "email": {
+                                    "type": "string",
+                                    "example": "teste@gmail.com"
+                                },
+                                "senha": {
+                                    "type": "string",
+                                    "example": "umasenhaqualquer"
+                                }
+                            }
+                        }
+                    }
+                  ]
+                ,
+                "responses": {
+                    "201": {
+                        "description": "Credenciais Válidas!"
+                    }
+                }
+            }
+        }
+    }
+}

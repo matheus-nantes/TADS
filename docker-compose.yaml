@@ -1,0 +1,61 @@
+version: '3'
+services:
+  # db_data_service:
+  #   image: postgres:13
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${POSTGRES_DB_DATA}
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data_service:/var/lib/postgresql/data
+  #   networks:
+  #     - my-network
+
+  # db_newsletter_service:
+  #   image: postgres:13
+  #   environment:
+  #     POSTGRES_USER: ${POSTGRES_USER}
+  #     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #     POSTGRES_DB: ${POSTGRES_DB_NEWSLETTER}
+  #   ports:
+  #     - "5433:5432"
+  #   volumes:
+  #     - postgres_newsletter_service:/var/lib/postgresql/data
+  #   networks:
+  #     - my-network
+
+  data_service:
+    build:
+      context: ./DataService
+      dockerfile: Dockerfile
+    ports:
+      - "3333:3333"
+    networks:
+      - my-network
+    # depends_on:
+    #   - db_data_service
+    # environment:
+    #   DATABASE_URL: ${DATA_SERVICE_DB_URL} quando conseguir conectar com postgres, descomentar
+
+  newsletter_service:
+    build:
+      context: ./NewsLetterService
+      dockerfile: Dockerfile
+    ports:
+      - "3334:3334"
+    networks:
+      - my-network
+    # depends_on:
+    #   - db_newsletter_service
+    # environment:
+    #   DATABASE_URL: ${NEWSLETTER_SERVICE_DB_URL} quando conseguir conectar com postgres, descomentar
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  postgres_data_service:
+  postgres_newsletter_service:
