@@ -74,7 +74,7 @@ yarn dev
 
 As rotas da API são definidas em cada `src/routes` de cada diretório de seu respectivo serviçoe mapeiam os endpoints para os serviços e seus respectivos casos de uso.
 Para acessar a documentação do serviço DataService, acesse: [localhost:3333/api/docs](http://localhost:3333/api-docs)
-Para acessar a documentação do serviço NewsLetterService, acesse: [localhost:3334/api/docs](http://localhost:3333/api-docs)
+Para acessar a documentação do serviço NewsLetterService, acesse: [localhost:3334/api/docs](http://localhost:3334/api-docs)
 
 ## Contato
 
