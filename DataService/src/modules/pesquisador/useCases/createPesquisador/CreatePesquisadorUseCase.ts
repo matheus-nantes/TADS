@@ -11,7 +11,7 @@ export class CreatePesquisadorUseCase {
         });
 
         if( pesquisadorAlreadyExists){
-            throw new AppError("Pesquisador already exists!");
+            return new AppError("Pesquisador already exists!");
         }
 
         const pesquisador = await prisma.pesquisador.create({

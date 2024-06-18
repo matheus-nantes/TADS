@@ -66,6 +66,43 @@
                 }
             }
         },
+        "/condicao/byTime": {
+            "get": {
+                "tags": ["CondicaoClimatica"],
+                "summary": "Listar dados coletados de um determinado período percorrio, especificado por dias, com opção de paginação",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Número da página",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Número de itens por página",
+                        "required": true,
+                        "type": "integer",
+                        "default": 10
+                    },
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "Quantidade de dias no passado a serem considerados na pesquisa",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de dados coletados dentro do período especificado"
+                    }
+                }
+            }
+        },
         "/pesquisador": {
             "post": {
                 "tags": ["Pesquisador"],

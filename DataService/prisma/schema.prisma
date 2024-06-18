@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url=env("DATABASE_URL")
 }
 
@@ -22,7 +22,7 @@ model Pesquisador{
   created_At DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  inserir_Dados CondicaoClimatica[] @relation("inserirDados")
+  // inserir_Dados CondicaoClimatica[] @relation("inserirDados")
 
   @@map("Pesquisador")
 }
@@ -50,8 +50,8 @@ model CondicaoClimatica{
   created_At DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  pesquisador Pesquisador @relation("inserirDados", fields: [cpfPesquisador], references: [cpf])
-  cpfPesquisador String @default("123.456.789-11")
+  // pesquisador Pesquisador @relation("inserirDados", fields: [cpfPesquisador], references: [cpf])
+  // cpfPesquisador String @default("123.456.789-11")
 
   @@map("CondicaoClimatica")
 }

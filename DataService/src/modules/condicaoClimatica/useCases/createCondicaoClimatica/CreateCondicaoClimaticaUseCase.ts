@@ -4,12 +4,12 @@ import { prisma } from "../../../../prisma/client";
 import { CreateCondicaoClimaticaDTO } from "../../dtos/CreateCondicaoClimaticaDTO";
 
 export class CreateCondicaoClimaticaUseCase {
-    async execute({latitude, longitude} : CreateCondicaoClimaticaDTO) : Promise<CondicaoClimatica> {
+    async execute({latitude, longitude} : CreateCondicaoClimaticaDTO) {
         const appID = "45abb2fa01865b31408e5ddbd2c0070d";
         
         const urlGet = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${appID}&units=metric`;
         const dadosClimaticos = await fetch(urlGet);
-
+       
         if (dadosClimaticos.ok) {
             const data:any = await dadosClimaticos.json();
 
@@ -36,13 +36,12 @@ export class CreateCondicaoClimaticaUseCase {
                     nuvens: data.clouds.all,
                     nascerDoSol: nascerDoSol,
                     porDoSol: porDoSol,
-                    dataDeColeta: dataDeColeta,
-                    cpfPesquisador: "123.456.789-11"//futuramente, isso pode ser modificado para uqe com o login do persuisador, esse campo também virá por meio do body do post.
+                    dataDeColeta: dataDeColeta
                 }
             });
             return condicao;
         } else {
-            throw new AppError(`Erro na requisição: ${dadosClimaticos.status}`);
+            return new AppError(`Erro na requisição: ${dadosClimaticos.status}`);
         }
     
     }
