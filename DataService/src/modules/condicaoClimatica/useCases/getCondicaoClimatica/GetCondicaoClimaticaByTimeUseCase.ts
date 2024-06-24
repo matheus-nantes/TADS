@@ -14,7 +14,7 @@ export class GetCondicaoClimaticaByTimeUseCase {
     }
 
     const today = new Date();
-    const thresholdDate = new Date(today.getTime() - days * 24 * 60 * 60 * 1000); // Convert days to milliseconds
+    const thresholdDate = new Date(today.getTime() - days * 24 * 60 * 60 * 1000);
     const offset = (pagina - 1) * limite;
     const condicoesClimaticas = await prisma.condicaoClimatica.findMany({
       where: {

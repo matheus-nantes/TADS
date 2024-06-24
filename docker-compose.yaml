@@ -37,7 +37,9 @@ services:
     depends_on:
       - db_data_service
     environment:
-      DATABASE_URL: ${DATA_SERVICE_DB_URL} #quando conseguir conectar com postgres, descomentar
+      DATABASE_URL: ${DATA_SERVICE_DB_URL}
+    volumes:
+      - ./DataService/prisma:/app/prisma
 
   newsletter_service:
     build:
@@ -50,7 +52,9 @@ services:
     depends_on:
       - db_newsletter_service
     environment:
-      DATABASE_URL: ${NEWSLETTER_SERVICE_DB_URL} #quando conseguir conectar com postgres, descomentar
+      DATABASE_URL: ${NEWSLETTER_SERVICE_DB_URL} 
+    volumes:
+    - ./NewsLetterService/prisma:/app/prisma
 
 networks:
   my-network:

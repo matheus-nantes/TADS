@@ -57,6 +57,28 @@
                 }
             }
         },
+        "/inscricao/periodicidade":{
+            "get": {
+                "tags": ["Inscricao"],
+                "summary": "Listar usuários por tipo especificado",
+                "parameters": [
+                    {
+                        "name": "periodicidade",
+                        "in": "query",
+                        "description": "Periodicidade escolhida plo usuário",
+                        "required": false,
+                        "type": "string",
+                        "default": "semanal"
+                    }
+                    
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de dados coletados"
+                    }
+                }
+            }
+        },
         "/inscricao/desativar": {
             "put": {
                 "tags": ["Inscricao"],
@@ -118,6 +140,67 @@
                     }
                 }
             }
+        },
+        "/relatorio":{
+            "post": {
+                "tags": ["Relatorio"],
+                "summary": "Criar relatorio",
+                "parameters": [
+                    {
+                      "in": "body",
+                      "name": "body",
+                      "description": "Criar um novo relatorio no banco",
+                      "required": true,
+                      "schema": {
+                       "type": "object",
+                            "properties": {
+                                "tipo": {
+                                    "type": "string",
+                                    "example": "semanal"
+                                },
+                                "titulo": {
+                                    "type": "string",
+                                    "example": "um titulo qualquer"
+                                },
+                                "conteudo":{
+                                    "type":"string",
+                                    "example":"conteudo de um relatorio qualquer"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "get": {
+                "tags": ["Relatorio"],
+                "summary": "Listar os relatorios cadastrados no banco de dados",
+                "responses": {
+                    "200": {
+                        "description": "Lista de relatorios cadastrados"
+                    }
+                }
+            }             
+        },
+        "/relatorio/last":{
+            "get": {
+                "tags": ["Relatorio"],
+                "summary": "Listar o relatório mais recente de um determinado tipo ",
+                "parameters": [
+                    {
+                        "name": "tipo",
+                        "in": "query",
+                        "description": "Tipo de periodicidade",
+                        "required": true,
+                        "type": "string",
+                        "default": "semanal"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de relatorios cadastrados"
+                    }
+                }
+            }             
         }
     }
 }
