@@ -19,7 +19,7 @@ model Inscrito {
   email           String    @unique
   senha           String
   periodicidade   String    //semanal, quinzenal, mensal, semestral
-  ultimoRecebido  String    @default("")//id do último relatório do tipo especificado que ele recebeu
+  ultimoRecebido  Int    @default(0)//id do último relatório do tipo especificado que ele recebeu
   ativo           Boolean   @default(true)
   created_At DateTime @default(now())
   updated_at DateTime @updatedAt

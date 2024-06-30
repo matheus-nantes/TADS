@@ -7,11 +7,6 @@ import { routes } from './routes';
 import { AppError } from './errors/AppError';
 
 const app = express();
-app.use(cors({
-    origin: 'http://localhost:3334', // Permite requisições da origem http://localhost:3333
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-}));
 
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));

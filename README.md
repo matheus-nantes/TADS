@@ -46,6 +46,17 @@ Este projeto foi desenvolvido como parte da disciplina de Técnicas Avançadas d
 ```
 - O serviço DataService irá inicar na porta <b>3333</b>, e o serviço NewsLetterService irá iniciar na porta <b>3334</b>.
 
+- *Para garantir que não sejam alocados recursos desnecessários pelo seu docker, exclua recursos inutilizados no docker:
+```bash
+docker container prune
+docker image prune -a
+docker volume prune
+docker network prune
+docker rmi $(docker images -a -q)
+
+docker system df
+
+```
 
 
 Obs. **Caso tneha curiosidade, execute os serviços individualmente:**

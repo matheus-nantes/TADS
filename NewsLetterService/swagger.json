@@ -108,6 +108,38 @@
                 }
             }
         },
+        "/inscricao/ultimoRecebido": {
+            "put": {
+                "tags": ["Inscricao"],
+                "summary": "Atualizar o campo ultimoRecebido de um inscrito",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Dados para atualizar o campo ultimoRecebido de um inscrito",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number",
+                                    "example": 1
+                                },
+                                "ultimoRecebido": {
+                                    "type": "number",
+                                    "example": 1
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Campo ultimoRecebido atualizado com sucesso!"
+                    }
+                }
+            }
+        },
         "/inscricao/login": {
             "post": {
                 "tags": ["Inscricao"],
@@ -198,6 +230,27 @@
                 "responses": {
                     "200": {
                         "description": "Lista de relatorios cadastrados"
+                    }
+                }
+            }             
+        },
+        "/relatorio/byID":{
+            "get": {
+                "tags": ["Relatorio"],
+                "summary": "Obter o relatório pelo ID especificado ",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Indentificador unitário",
+                        "required": true,
+                        "type": "number",
+                        "default": "0"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Relatório encontrado"
                     }
                 }
             }             
