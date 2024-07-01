@@ -54,7 +54,19 @@ services:
     environment:
       DATABASE_URL: ${NEWSLETTER_SERVICE_DB_URL} 
     volumes:
-    - ./NewsLetterService/prisma:/app/prisma
+      - ./NewsLetterService/prisma:/app/prisma
+
+  api_gateway:
+    build:
+      context: ./APIGateway
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - my-network
+    depends_on:
+      - data_service
+      - newsletter_service
 
 networks:
   my-network:
