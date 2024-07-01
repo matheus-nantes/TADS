@@ -9,6 +9,23 @@ import { AppError } from './errors/AppError';
 const app = express();
 
 app.use(express.json());
+
+app.use((req: Request, res: Response, next: NextFunction) => {
+    const allowedGatewayHost = "api_gateway"; 
+    const requestHost = req.headers.host;
+    const forwardedHost = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+    if (requestHost && requestHost.startsWith(allowedGatewayHost) || forwardedHost === 'api_gateway' || forwardedHost === '127.0.0.1') {
+         next();
+    } else {
+        res.status(403).json({
+            status: "error",
+            message: "Forbidden"
+        });
+    }
+});
+
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(routes);

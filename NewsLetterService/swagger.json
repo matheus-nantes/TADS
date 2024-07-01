@@ -6,6 +6,7 @@
         "description": "API para coleta e listagem de dados climáticos"
     },
     "schemes": ["http"],
+    "basePath": "/newsletter",
     "paths": {
         "/inscricao": {
             "post": {
