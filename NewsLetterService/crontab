@@ -1,1 +1,1 @@
-0 * * * * python3 /app/_main.py >> /var/log/cron.log 
+0 12 * * * python3 /app/_main.py >> /var/log/cron.log 

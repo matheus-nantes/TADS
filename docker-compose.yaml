@@ -68,6 +68,15 @@ services:
       - data_service
       - newsletter_service
 
+  frontweb:
+    build:
+      context: ./WebSiteUI/front
+      dockerfile: Dockerfile  
+    ports:
+      - "3000:3000"  
+    networks:
+      - my-network
+
 networks:
   my-network:
     driver: bridge

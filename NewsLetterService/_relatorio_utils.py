@@ -111,27 +111,84 @@ def gerar_relatorio(periodo, titulo, dias):
         <head>
             <style>
                 body {{
-                    font-family: Arial, sans-serif;
-                    margin: 20px;
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-size: cover;
+                background-position: center;
+                display: flex; /* Para centralizar vertical e horizontalmente */
+                justify-content: center; /* Centraliza horizontalmente */
+                align-items: center; /* Centraliza verticalmente */
+
+            }}
+            p {{
+                margin: 10px 0;
+            }}
+            .card {{
+                position: relative;
+                width: 190px;
+                height: 254px;
+                background-color: #000;
+                display: flex;
+                flex-direction: column;
+                justify-content: end;
+                padding: 12px;
+                gap: 12px;
+                border-radius: 8px;
+                cursor: pointer;
+                color: white;
                 }}
-                h2 {{
-                    color: #333;
+
+                .card::before {{
+                content: '';
+                position: absolute;
+                inset: 0;
+                left: -5px;
+                margin: auto;
+                width: 200px;
+                height: 264px;
+                border-radius: 10px;
+                background: linear-gradient(-45deg, #1eff00 0%, #00eeff 100% );
+                z-index: -10;
+                pointer-events: none;
+                transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                 }}
-                p {{
-                    margin: 10px 0;
+
+                .card::after {{
+                content: "";
+                z-index: -1;
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(-45deg, #00ff0d 0%, #00dbde 100% );
+                transform: translate3d(0, 0, 0) scale(1);
+                filter: blur(20px);
                 }}
-                .summary {{
-                    border: 1px solid #ccc;
-                    padding: 20px;
-                    max-width: 400px;
-                    margin: 0 auto;
-                    border-radius: 8px;
-                    background-color: #f9f9f9;
+
+                .heading {{
+                font-size: 20px;
+                text-transform: capitalize;
+                font-weight: 700;
+                }}
+
+                .card p:not(.heading) {{
+                font-size: 14px;
+                }}
+
+                .card p:last-child {{
+                color: #00dbde;
+                font-weight: 600;
+                }}
+
+                .card:hover::after {{
+                filter: blur(30px);
+                }}
+
+                .card:hover::before {{
+                transform: rotate(-90deg) scaleX(1.34) scaleY(0.77);
                 }}
             </style>
         </head>
         <body>
-            <div class="summary">
+            <div class="card">
                 <h2>{titulo}</h2>
                 <p>Período: Últimos {dias} dias</p>
                 <p>Temperatura Média: {medias['media_temperatura']:.2f}°C</p>
